@@ -15,10 +15,10 @@ pub fn establish_connection() -> PgConnection {
     PgConnection::establish(&database_url).unwrap_or_else(|_| panic!("Error connecting to {}",database_url))
 }
 
-pub fn create_patient (conn: &mut PgConnection, name: &str, address: &str) -> Patient {
+pub fn create_patient (conn: &mut PgConnection,id:i32, name: &str, address: &str,doctor_id:i32) -> Patient {
     use crate::schema::patients;
 
-    let new_patient = NewPatient{name,address,doctor_id:0};
+    let new_patient = NewPatient{id,name,address,doctor_id};
 
     diesel::insert_into(patients::table)
         .values(&new_patient)
@@ -27,10 +27,10 @@ pub fn create_patient (conn: &mut PgConnection, name: &str, address: &str) -> Pa
         .expect("Error adding new patient")
 }
 
-pub fn create_doctor (conn: &mut PgConnection, name: &str, address: &str) -> Doctor {
+pub fn create_doctor (conn: &mut PgConnection, id:i32,name: &str, address: &str) -> Doctor {
     use crate::schema::doctors;
 
-    let new_doctor = NewDoctor{name,address};
+    let new_doctor = NewDoctor{id,name,address};
 
     diesel::insert_into(doctors::table)
         .values(&new_doctor)

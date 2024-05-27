@@ -1,5 +1,5 @@
 CREATE TABLE doctors(
-   id SERIAL PRIMARY KEY,
+   id INTEGER PRIMARY KEY,
    name VARCHAR NOT NULL,
    address VARCHAR NOT NULL
 )-- Your SQL goes here

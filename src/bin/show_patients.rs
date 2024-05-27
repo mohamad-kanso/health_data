@@ -14,7 +14,7 @@ fn main() {
       .load(connection)
       .expect("Error loading patients");
 
-   println!("Displating {} patients",results.len());
+   println!("Displaying {} patients\n",results.len());
 
    for patient in results {
       println!("******");

@@ -14,8 +14,10 @@ fn main() {
       .expect("Error loading Doctors");
 
    println!("Displaying {} doctors",results.len());
+   println!();
    for doctor in results {
-      println!("{}",doctor.name);
-      println!("{}",doctor.address);
+      println!("doctor's name: {}",doctor.name);
+      println!("doctor's address: {}",doctor.address);
+      println!()
    }
 }

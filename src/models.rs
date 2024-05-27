@@ -1,7 +1,7 @@
 use diesel::prelude::*;
 use crate::schema::{doctors,patients};
 
-#[derive(Queryable,Selectable,Debug,PartialEq)]
+#[derive(Queryable,Identifiable,Selectable,Debug,PartialEq)]
 #[diesel(table_name = doctors)]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct Doctor {
@@ -14,11 +14,12 @@ pub struct Doctor {
 #[diesel(table_name = doctors)]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct NewDoctor<'a> {
+    pub id: i32,
     pub name: &'a str,
     pub address: &'a str
 }
 
-#[derive(Queryable,Selectable,Associations,Debug,PartialEq)]
+#[derive(Queryable,Identifiable,Selectable,Associations,Debug,PartialEq)]
 #[diesel(belongs_to(Doctor))]
 #[diesel(table_name = patients)]
 #[diesel(check_for_backend(diesel::pg::Pg))]
@@ -33,7 +34,8 @@ pub struct Patient {
 #[diesel(table_name = patients)]
 #[diesel(check_for_backend(diesel::pg::Pg))]
 pub struct NewPatient<'a> {
+    pub id: i32,
     pub name: &'a str,
     pub address: &'a str,
-    pub doctor_id: i32,
+    pub doctor_id: i32,    
 }

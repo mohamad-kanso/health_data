@@ -9,7 +9,7 @@ fn main() {
 
    let mut doc_id = String::new();
 
-   let id = args()
+   let id   = args()
       .nth(1)
       .expect("changing doctor requires patient id")
       .parse::<i32>()

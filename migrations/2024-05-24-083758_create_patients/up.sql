@@ -1,6 +1,6 @@
 CREATE TABLE patients(
-   id SERIAL PRIMARY KEY,
+   id INTEGER PRIMARY KEY,
    name VARCHAR NOT NULL,
    address VARCHAR NOT NULL,
-   doctor_id INTEGER NOT NULL REFERENCES doctors(id)
+   doctor_id INTEGER REFERENCES doctors(id) DEFAULT '0'
 )-- Your SQL goes here
